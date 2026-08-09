@@ -1,0 +1,40 @@
+name: Bouw voor Plesk
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: plesk-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Broncode ophalen
+        uses: actions/checkout@v4
+      - name: Node instellen
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Pakketten installeren
+        run: npm ci
+      - name: Productieversie bouwen
+        run: npm run build
+      - name: Statische Plesk-branch bijwerken
+        env:
+          REPOSITORY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git -C dist init -b plesk
+          git -C dist config user.name "github-actions[bot]"
+          git -C dist config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C dist add -A
+          git -C dist commit -m "Automatische productiebuild voor Plesk"
+          git -C dist remote add origin "https://x-access-token:${REPOSITORY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git -C dist push --force origin plesk
