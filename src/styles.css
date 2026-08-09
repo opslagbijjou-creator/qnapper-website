@@ -1,7 +1,7 @@
-@font-face { font-family: 'Cabinet Grotesk'; src: url('/assets/fonts/cabinet-grotesk-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Cabinet Grotesk'; src: url('/assets/fonts/cabinet-grotesk-500.woff2') format('woff2'); font-weight: 500 600; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Cabinet Grotesk'; src: url('/assets/fonts/cabinet-grotesk-700.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Cabinet Grotesk'; src: url('/assets/fonts/cabinet-grotesk-800.woff2') format('woff2'); font-weight: 800 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Cabinet Grotesk'; src: url('../assets/fonts/cabinet-grotesk-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Cabinet Grotesk'; src: url('../assets/fonts/cabinet-grotesk-500.woff2') format('woff2'); font-weight: 500 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Cabinet Grotesk'; src: url('../assets/fonts/cabinet-grotesk-700.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Cabinet Grotesk'; src: url('../assets/fonts/cabinet-grotesk-800.woff2') format('woff2'); font-weight: 800 900; font-style: normal; font-display: swap; }
 
 :root {
   --paper: #f4f5ef;
@@ -82,7 +82,7 @@ p, h1, h2, h3 { margin-top: 0; }
 .bento-card svg { width: 34px; height: 34px; }
 .bento-card h3 { margin: 0 0 10px; font-size: clamp(1.45rem, 2vw, 2.15rem); line-height: 1.05; }
 .bento-card p { margin: 0; color: var(--muted); line-height: 1.55; }
-.bento-card--feature { grid-column: span 2; grid-row: span 2; min-height: 492px; padding: 44px; color: #fff; background: linear-gradient(145deg, rgba(17,21,16,.2), rgba(17,21,16,.92)), url('/assets/personal-planning.jpg') center/cover; }
+.bento-card--feature { grid-column: span 2; grid-row: span 2; min-height: 492px; padding: 44px; color: #fff; background: linear-gradient(145deg, rgba(17,21,16,.2), rgba(17,21,16,.92)), url('../assets/personal-planning.jpg') center/cover; }
 .bento-card--feature p { max-width: 540px; color: rgba(255,255,255,.76); font-size: 1.12rem; }
 .bento-card--lime { color: #14240c; background: var(--green); }
 .bento-card--lime p { color: rgba(20,36,12,.72); }

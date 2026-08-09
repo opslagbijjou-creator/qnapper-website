@@ -63,7 +63,7 @@ const perspectives = [
 function Brand({ compact = false }) {
   return (
     <a className={`brand ${compact ? 'brand--compact' : ''}`} href="#top" aria-label="Qnapper, terug naar boven">
-      <img src="/assets/qnapper-mark.png" alt="" aria-hidden="true" />
+      <img src="./assets/qnapper-mark.png" alt="" aria-hidden="true" />
       <span><b>iQ</b>NAPPER<small>Huiswerkbegeleiding</small></span>
     </a>
   )
@@ -195,7 +195,7 @@ function App() {
           </div>
           <div className="hero-visual hero-reveal">
             <div className="hero-image-wrap interactive-media">
-              <img src="/assets/student-focus.jpg" alt="Een leerling werkt rustig en geconcentreerd aan zijn huiswerk" />
+              <img src="./assets/student-focus.jpg" alt="Een leerling werkt rustig en geconcentreerd aan zijn huiswerk" />
             </div>
             <div className="hero-note">
               <span>Rust in je hoofd</span>
@@ -207,7 +207,7 @@ function App() {
         <section id="begeleiding" className="chapter intro-section">
           <div className="section-heading">
             <p className="kicker">Wat is Qnapper?</p>
-            <h2>Een rustige plek waar <span className="inline-image"><img src="/assets/personal-planning.jpg" alt="Leerling en begeleider maken samen een planning" /></span> overzicht ontstaat.</h2>
+            <h2>Een rustige plek waar <span className="inline-image"><img src="./assets/personal-planning.jpg" alt="Leerling en begeleider maken samen een planning" /></span> overzicht ontstaat.</h2>
           </div>
           <div className="intro-grid">
             <p>Weten wat je moet leren is iets anders dan weten hoe je begint. Qnapper helpt bij plannen, prioriteiten stellen en geconcentreerd werken.</p>
@@ -263,7 +263,7 @@ function App() {
               <h2>Een vast ritme. Steeds meer zelfstandigheid.</h2>
               <p>We starten samen, de leerling werkt zelfstandig en we sluiten af met helder overzicht voor de rest van de week.</p>
               <div className="process-image interactive-media">
-                <img className="motion-image" src="/assets/personal-planning.jpg" alt="Persoonlijke begeleiding bij het maken van een weekplanning" />
+                <img className="motion-image" src="./assets/personal-planning.jpg" alt="Persoonlijke begeleiding bij het maken van een weekplanning" />
               </div>
             </div>
             <div className="process-list">
@@ -312,7 +312,7 @@ function App() {
 
         <section id="voor-wie" className="chapter audience-section">
           <div className="audience-image interactive-media">
-            <img className="motion-image" src="/assets/small-group.jpg" alt="Drie leerlingen werken geconcentreerd in een kleine begeleidingsgroep" />
+            <img className="motion-image" src="./assets/small-group.jpg" alt="Drie leerlingen werken geconcentreerd in een kleine begeleidingsgroep" />
           </div>
           <div className="audience-copy">
             <p className="kicker">Kleine groepen, persoonlijke aandacht</p>
@@ -347,7 +347,7 @@ function App() {
 
         <section id="kennismaken" className="chapter contact-section">
           <div className="contact-brand">
-            <img src="/assets/qnapper-logo-transparent.png" alt="iQnapper Huiswerkbegeleiding — Word een snapper bij Qnapper" />
+            <img src="./assets/qnapper-logo-transparent.png" alt="iQnapper Huiswerkbegeleiding — Word een snapper bij Qnapper" />
           </div>
           <div className="contact-copy">
             <p className="kicker kicker--light">Vrijblijvend kennismaken</p>
