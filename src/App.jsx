@@ -63,15 +63,17 @@ const perspectives = [
 function Brand({ compact = false }) {
   return (
     <a className={`brand ${compact ? 'brand--compact' : ''}`} href="#top" aria-label="Qnapper, terug naar boven">
-      <img src="./assets/qnapper-mark.png" alt="" aria-hidden="true" />
-      <span><b>iQ</b>NAPPER<small>Huiswerkbegeleiding</small></span>
+      <img src="./assets/favicon-512.png" alt="" aria-hidden="true" />
+      <span><b>Q</b>NAPPER<small>Huiswerkbegeleiding</small></span>
     </a>
   )
 }
 
 function App() {
   const root = useRef(null)
+  const heroRef = useRef(null)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [navVisible, setNavVisible] = useState(false)
   const [activeSkill, setActiveSkill] = useState(0)
   const [activePerspective, setActivePerspective] = useState(0)
   const [sent, setSent] = useState(false)
@@ -81,6 +83,20 @@ function App() {
       setActivePerspective((current) => (current + 1) % perspectives.length)
     }, 6500)
     return () => window.clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
+    const hero = heroRef.current
+    if (!hero) return undefined
+
+    const observer = new IntersectionObserver(([entry]) => {
+      const hasPassedHero = !entry.isIntersecting && entry.boundingClientRect.bottom <= 0
+      setNavVisible(hasPassedHero)
+      if (!hasPassedHero) setMenuOpen(false)
+    }, { threshold: 0 })
+
+    observer.observe(hero)
+    return () => observer.disconnect()
   }, [])
 
   useGSAP(() => {
@@ -94,6 +110,28 @@ function App() {
       stagger: 0.11,
       ease: 'power3.out',
     })
+
+    gsap.from('.hero-primary-logo', {
+      scale: 0.84,
+      opacity: 0,
+      duration: 1.35,
+      ease: 'power3.out',
+    })
+
+    gsap.fromTo('.hero-word',
+      { opacity: 0.72 },
+      {
+        opacity: 1,
+        stagger: 0.08,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom 55%',
+          scrub: true,
+        },
+      },
+    )
 
     gsap.utils.toArray('.motion-image').forEach((image) => {
       gsap.fromTo(image,
@@ -160,7 +198,7 @@ function App() {
   return (
     <div ref={root}>
       <main id="top" className="page-shell">
-        <nav className="nav-wrap" aria-label="Hoofdnavigatie">
+        <nav className={`nav-wrap ${navVisible ? 'is-visible' : ''}`} aria-label="Hoofdnavigatie" aria-hidden={!navVisible} inert={navVisible ? undefined : true}>
           <div className="nav-inner">
             <Brand compact />
             <div className="nav-links">
@@ -183,25 +221,29 @@ function App() {
           )}
         </nav>
 
-        <header className="hero chapter">
+        <header ref={heroRef} className="hero chapter">
+          <div className="hero-orbit" aria-hidden="true" />
+          <div className="hero-brand-stage hero-reveal">
+            <img className="hero-primary-logo" src="./assets/qnapper-primary-logo.png" alt="Qnapper Huiswerkbegeleiding — Word een snapper bij Qnapper" />
+          </div>
           <div className="hero-copy">
-            <p className="kicker hero-reveal">Huiswerkbegeleiding die verder kijkt</p>
-            <h1 className="hero-reveal">Meer rust. Meer structuur. <em>Slimmer leren.</em></h1>
-            <p className="hero-intro hero-reveal">Qnapper helpt leerlingen grip te krijgen op huiswerk, toetsen en planning. Niet door het werk over te nemen, maar door te leren hoe je het zelf aanpakt.</p>
-            <div className="hero-actions hero-reveal">
-              <a className="button button--green" href="#kennismaken">Kennismaken met Qnapper <ArrowRight aria-hidden="true" /></a>
-              <a className="button button--light" href="#begeleiding">Bekijk onze begeleiding <ArrowDown aria-hidden="true" /></a>
+            <div className="hero-message hero-reveal">
+              <p className="kicker kicker--light">Huiswerkbegeleiding die verder kijkt</p>
+              <h1>
+                {['Meer', 'rust.', 'Meer', 'structuur.', 'Slimmer', 'leren.'].map((word, index) => (
+                  <span className={`hero-word ${index > 3 ? 'is-green' : ''}`} key={`${word}-${index}`}>{word} </span>
+                ))}
+              </h1>
+            </div>
+            <div className="hero-side hero-reveal">
+              <p className="hero-intro">Qnapper helpt leerlingen grip te krijgen op huiswerk, toetsen en planning. Niet door het werk over te nemen, maar door te leren hoe je het zelf aanpakt.</p>
+              <div className="hero-actions">
+                <a className="button button--green" href="#kennismaken">Kennismaken <ArrowRight aria-hidden="true" /></a>
+                <a className="button button--ghost" href="#begeleiding">Onze begeleiding <ArrowDown aria-hidden="true" /></a>
+              </div>
             </div>
           </div>
-          <div className="hero-visual hero-reveal">
-            <div className="hero-image-wrap interactive-media">
-              <img src="./assets/student-focus.jpg" alt="Een leerling werkt rustig en geconcentreerd aan zijn huiswerk" />
-            </div>
-            <div className="hero-note">
-              <span>Rust in je hoofd</span>
-              <p>Een heldere planning maakt van veel schoolwerk kleine, haalbare stappen.</p>
-            </div>
-          </div>
+          <div className="hero-scroll-cue" aria-hidden="true"><span /> Scroll om verder te gaan</div>
         </header>
 
         <section id="begeleiding" className="chapter intro-section">
@@ -274,7 +316,7 @@ function App() {
                 ['Controleren en helpen', 'We volgen de planning en ondersteunen bij uitleg, samenvatten, woordjes leren en prioriteiten.'],
                 ['Afronden', 'We bekijken wat af is en wat nog komt. De leerling vertrekt met overzicht over de rest van de week.'],
               ].map(([title, copy], index) => (
-                <article className="process-card" key={title}>
+                <article className="process-card" key={title} style={{ '--card-index': index }}>
                   <span>{String(index + 1).padStart(2, '0')}</span>
                   <h3>{title}</h3>
                   <p>{copy}</p>
@@ -347,7 +389,7 @@ function App() {
 
         <section id="kennismaken" className="chapter contact-section">
           <div className="contact-brand">
-            <img src="./assets/qnapper-logo-transparent.png" alt="iQnapper Huiswerkbegeleiding — Word een snapper bij Qnapper" />
+            <img src="./assets/qnapper-primary-logo.png" alt="Qnapper Huiswerkbegeleiding — Word een snapper bij Qnapper" />
           </div>
           <div className="contact-copy">
             <p className="kicker kicker--light">Vrijblijvend kennismaken</p>
