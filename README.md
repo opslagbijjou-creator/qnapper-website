@@ -17,7 +17,7 @@ npm run dev
 ## Inhoud en assets
 
 - Alle zichtbare teksten zijn gebaseerd op `Qnapper_huiswerkbegeleiding_Plesk_AI.pdf`.
-- Het aangeleverde horizontale Qnapper-logo staat lokaal in `public/assets` en wordt in de bovenbalk gebruikt.
+- Het aangeleverde horizontale Qnapper-logo staat lokaal met transparante achtergrond in `public/assets` en wordt in de bovenbalk gebruikt.
 - De drie leerlingbeelden zijn speciaal voor deze website gegenereerd en lokaal opgeslagen.
 - Het contactformulier gebruikt op Plesk `public/api/contact.php` en bezorgt aanvragen bij `info@qnapper.nl`.
 - De PHP-mailhandler gebruikt de lokale mailvoorziening van Plesk. Er staat geen mailboxwachtwoord in de openbare repository.

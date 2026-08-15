@@ -26,7 +26,7 @@ const steps = [
 function Brand() {
   return (
     <a className="brand" href="#top" aria-label="Qnapper, terug naar boven">
-      <img src="./assets/qnapper-horizontal-logo.jpg" alt="Qnapper" />
+      <img src="./assets/qnapper-horizontal-logo-transparent.png" alt="Qnapper" />
     </a>
   )
 }
@@ -121,7 +121,7 @@ function App() {
               <a href="#werkwijze">Werkwijze</a>
               <a href="#voor-wie">Voor wie</a>
             </div>
-            <a className="button button--dark nav-cta" href="#kennismaken">Meld je aan <ArrowRight aria-hidden="true" /></a>
+            <a className="button button--green nav-cta" href="#kennismaken">Meld je aan <ArrowRight aria-hidden="true" /></a>
             <button
               className="menu-button"
               type="button"

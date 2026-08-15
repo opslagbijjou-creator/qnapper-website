@@ -28,14 +28,14 @@ p, h1, h2, h3 { margin-top: 0; }
 .kicker { margin-bottom: 18px; color: #397b10; font-size: .76rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
 .kicker--light { color: var(--green); }
 
-.nav-wrap { position: sticky; z-index: 100; top: 0; border-bottom: 1px solid rgba(16,20,15,.08); background: rgba(255,255,255,.96); backdrop-filter: blur(18px); }
+.nav-wrap { position: sticky; z-index: 100; top: 0; border-bottom: 1px solid rgba(255,255,255,.1); background: rgba(24,34,22,.97); backdrop-filter: blur(18px); }
 .nav-inner { display: flex; width: min(1280px, calc(100% - 48px)); min-height: 108px; align-items: center; margin: 0 auto; }
-.brand { display: block; overflow: hidden; width: 244px; height: 70px; flex: none; background: #000; }
-.brand img { width: 100%; height: 100%; object-fit: cover; }
-.nav-links { display: flex; align-items: center; gap: 36px; margin: 0 auto; color: #353b32; font-size: .96rem; font-weight: 700; }
+.brand { display: block; width: 244px; height: 70px; flex: none; }
+.brand img { width: 100%; height: 100%; object-fit: contain; }
+.nav-links { display: flex; align-items: center; gap: 36px; margin: 0 auto; color: rgba(255,255,255,.82); font-size: .96rem; font-weight: 700; }
 .nav-links a, footer a { transition: color .2s ease; }
 .nav-links a:hover, footer a:hover { color: var(--green-dark); }
-.menu-button { display: none; width: 48px; height: 48px; place-items: center; border: 0; color: #fff; background: var(--ink); }
+.menu-button { display: none; width: 48px; height: 48px; place-items: center; border: 1px solid rgba(255,255,255,.22); color: #fff; background: rgba(255,255,255,.06); }
 .menu-button svg { width: 23px; height: 23px; }
 .mobile-menu { display: none; }
 
